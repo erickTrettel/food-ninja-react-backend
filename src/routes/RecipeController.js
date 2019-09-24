@@ -9,13 +9,13 @@ router.get('/', (req, res) => {
     if(error) {
       responseEntity.error = true
       responseEntity.message = `Failed to find all recipes: ${error}`
-      res.json(responseEntity).status(500)
+      res.status(500).json(responseEntity)
       return
     }
 
     responseEntity.data = queryResponse
     responseEntity.message = `Success`
-    res.json(responseEntity).status(200)
+    res.status(200).json(responseEntity)
     return
   })
 })
@@ -28,13 +28,13 @@ router.get('/:id', (req, res) => {
     if(error) {
       responseEntity.error = true
       responseEntity.message = `Failed to find recipe by id (id: ${id}): ${error}`
-      res.json(responseEntity).status(500)
+      res.status(500).json(responseEntity)
       return
     }
 
     responseEntity.data = queryResponse
     responseEntity.message = `Success`
-    res.json(responseEntity).status(200)
+    res.status(200).json(responseEntity)
     return
   })
 })
@@ -47,19 +47,19 @@ router.post('/', (req, res) => {
     if(error) {
       responseEntity.error = true
       responseEntity.message = `Failed to save recipe (recipe: ${recipe}): ${error}`
-      res.json(responseEntity).status(500)
+      res.status(500).json(responseEntity)
       return
     }
 
     if(queryResponse.affectedRows <= 0) {
       responseEntity.message = `No lines affected (recipe: ${recipe}): ${error}`
-      res.json(responseEntity).status(400)
+      res.status(400).json(responseEntity)
       return
     }
 
     responseEntity.data = queryResponse
     responseEntity.message = `Success`
-    res.json(responseEntity).status(200)
+    res.status(200).json(responseEntity)
     return
   })
 })
@@ -72,19 +72,19 @@ router.put('/', (req, res) => {
     if(error) {
       responseEntity.error = true
       responseEntity.message = `Failed to update recipe (recipe: ${recipe}): ${error}`
-      res.json(responseEntity).status(500)
+      res.status(500).json(responseEntity)
       return
     }
 
     if(queryResponse.affectedRows <= 0) {
       responseEntity.message = `No lines affected (recipe: ${recipe}): ${error}`
-      res.json(responseEntity).status(400)
+      res.status(400).json(responseEntity)
       return
     }
 
     responseEntity.data = queryResponse
     responseEntity.message = `Success`
-    res.json(responseEntity).status(200)
+    res.status(200).json(responseEntity)
     return
   })
 })
@@ -97,19 +97,19 @@ router.delete('/', (req, res) => {
     if(error) {
       responseEntity.error = true
       responseEntity.message = `Failed to delete recipe (recipe: ${recipe}): ${error}`
-      res.json(responseEntity).status(500)
+      res.status(500).json(responseEntity)
       return
     }
 
     if(queryResponse.affectedRows <= 0) {
       responseEntity.message = `No lines affected (recipe: ${recipe}): ${error}`
-      res.json(responseEntity).status(400)
+      res.status(400).json(responseEntity)
       return
     }
 
     responseEntity.data = queryResponse
     responseEntity.message = `Success`
-    res.json(responseEntity).status(200)
+    res.status(200).json(responseEntity)
     return
   })
 })
@@ -122,19 +122,19 @@ router.delete('/:id', (req, res) => {
     if(error) {
       responseEntity.error = true
       responseEntity.message = `Failed to delete recipe by id (id: ${id}): ${error}`
-      res.json(responseEntity).status(500)
+      res.status(500).json(responseEntity)
       return
     }
 
     if(queryResponse.affectedRows <= 0) {
       responseEntity.message = `No lines affected (id: ${id}): ${error}`
-      res.json(responseEntity).status(400)
+      res.status(400).json(responseEntity)
       return
     }
 
     responseEntity.data = queryResponse
     responseEntity.message = `Success`
-    res.json(responseEntity).status(200)
+    res.status(200).json(responseEntity)
     return
   })
 })
