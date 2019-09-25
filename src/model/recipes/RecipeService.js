@@ -10,7 +10,15 @@ module.exports = class RecipeService {
   }
 
   static save(recipe, callback) {
-    return db.query(`INSERT INTO recipes (title, ingredients) VALUES ('${recipe.title}', '${recipe.ingredients}')
+    const fields = recipe.image 
+      ? 'title, ingredients, image' 
+      : 'title, ingredients'
+
+    const values = recipe.image 
+      ? `'${recipe.title}', '${recipe.ingredients}', '${recipe.image}'` 
+      : `'${recipe.title}', '${recipe.ingredients}'` 
+
+    return db.query(`INSERT INTO recipes (${fields}) VALUES (${values})
     `, callback)
   }
 
